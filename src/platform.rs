@@ -9,7 +9,7 @@ pub fn spawn_async<F: std::future::Future<Output = ()> + 'static>(fut: F) {
     pollster::block_on(fut);
 
     #[cfg(target_arch = "wasm32")]
-    web::wasm_bindgen_futures::spawn_local(fut);
+    wasm_bindgen_futures::spawn_local(fut);
 }
 
 pub async fn save_file(bytes: impl AsRef<[u8]>, filename: &str) {
