@@ -12,7 +12,6 @@ fn save_(data: &[u8], filename: &str) {
 
 pub fn save(app: &mut crate::MainApp, _ctx: &egui::Context, _frame: &mut eframe::Frame) {
     let filename = &app.state.filename;
-    // let data = &app.state.json;
 
     if filename.is_empty() {
         return;
