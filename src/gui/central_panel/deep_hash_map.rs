@@ -12,7 +12,7 @@ pub fn deep_hash_map(
     ui: &mut egui::Ui,
     key: &str,
     mut value: &mut serde_jsonc::Value,
-    visbility_map: &mut std::collections::HashMap<String, bool>,
+    visibility_map: &mut std::collections::HashMap<String, bool>,
     available_width: f32,
     viewer_mode: &ViewerMode,
     path: Vec<&str>,
@@ -29,7 +29,7 @@ pub fn deep_hash_map(
                     ui,
                     key,
                     value,
-                    visbility_map,
+                    visibility_map,
                     available_width,
                     viewer_mode,
                     path,
@@ -43,7 +43,7 @@ pub fn deep_hash_map(
             match viewer_mode {
                 ViewerMode::Markdown | ViewerMode::Both => {
                     let visibility_key = crate::processing::path_to_key(&path);
-                    let is_visible = visbility_map.get_mut(&visibility_key).unwrap();
+                    let is_visible = visibility_map.get_mut(&visibility_key).unwrap();
                     ui.checkbox(is_visible, "preview");
                 }
                 _ => {}
@@ -81,7 +81,7 @@ pub fn deep_hash_map(
                     ViewerMode::Markdown | ViewerMode::Both => {
                         let visibility_key = crate::processing::path_to_key(&path);
 
-                        let is_visible = visbility_map.get_mut(&visibility_key).unwrap();
+                        let is_visible = visibility_map.get_mut(&visibility_key).unwrap();
 
                         if *is_visible {
                             let mut cache = egui_commonmark::CommonMarkCache::default();

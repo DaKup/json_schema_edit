@@ -4,9 +4,9 @@ use serde_jsonc::Value;
 
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
 pub enum ViewerMode {
-    #[default]
     Editor,
     Markdown,
+    #[default]
     Both,
 }
 
