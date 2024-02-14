@@ -10,7 +10,7 @@ fn save_(data: &[u8], filename: &str) {
     platform::spawn_async(run(Vec::from(data), filename.to_string()));
 }
 
-pub fn save(app: &mut crate::MainApp, ctx: &egui::Context, frame: &mut eframe::Frame) {
+pub fn save(app: &mut crate::MainApp, _ctx: &egui::Context, _frame: &mut eframe::Frame) {
     let filename = &app.state.filename;
     // let data = &app.state.json;
 

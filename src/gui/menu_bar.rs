@@ -16,7 +16,12 @@ pub fn menu_bar(app: &mut crate::MainApp, ctx: &egui::Context, frame: &mut efram
             });
 
             ui.centered_and_justified(|ui| {
-                ui.label(&app.state.filename).highlight();
+                if app.state.filename.is_empty() {
+                    ui.label("Click File -> Open -> [json schema file]")
+                        .highlight();
+                } else {
+                    ui.label(&app.state.filename).highlight();
+                }
             });
         });
     });

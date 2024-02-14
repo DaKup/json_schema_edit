@@ -46,7 +46,7 @@ fn open_(data: &mut std::sync::Arc<std::sync::Mutex<(Vec<u8>, String, bool)>>) {
     ));
 }
 
-pub fn open(app: &mut crate::MainApp, ctx: &egui::Context, frame: &mut eframe::Frame) {
+pub fn open(app: &mut crate::MainApp, _ctx: &egui::Context, _frame: &mut eframe::Frame) {
     // let data = std::sync::Arc::new(std::sync::Mutex::new((vec![], String::to_owned(""), false)));
 
     // let data = &app.state.input_json;
