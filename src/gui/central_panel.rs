@@ -19,6 +19,23 @@ pub fn central_panel(app: &mut crate::MainApp, ctx: &egui::Context, _frame: &mut
             }
         });
 
+        if ui.small_button("Hide all").clicked() {
+            app.state
+                .visibility_hash_map
+                .iter_mut()
+                .for_each(|(_, value)| {
+                    *value = false;
+                });
+        }
+        if ui.small_button("Show all").clicked() {
+            app.state
+                .visibility_hash_map
+                .iter_mut()
+                .for_each(|(_, value)| {
+                    *value = true;
+                });
+        }
+
         ui.vertical(|ui| {
             egui::ScrollArea::vertical()
                 .min_scrolled_height(available_height)
@@ -30,6 +47,7 @@ pub fn central_panel(app: &mut crate::MainApp, ctx: &egui::Context, _frame: &mut
                             ui,
                             key,
                             value,
+                            &mut app.state.visibility_hash_map,
                             available_width,
                             &app.state.viewer_mode,
                             vec!["root"],
