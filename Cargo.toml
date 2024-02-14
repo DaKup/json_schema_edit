@@ -9,14 +9,14 @@ edition = "2021"
 log = "0.4.20"
 serde = { version = "1.0.196", features = ["derive"] }
 serde_jsonc = "1.0.108"
-egui = "0.26.1"
-eframe = { version = "0.26.1", default-features = false, features = [
+egui = { version = "0.26.2", features = ["rayon"] }
+eframe = { version = "0.26.2", default-features = false, features = [
     "default_fonts",
     "persistence",
-    "glow",
+    "glow"
 ] }
-egui_plot = "0.26.1"
-egui_extras = {version = "0.26.1", features = ["syntect", "all_loaders"] }
+egui_plot = "0.26.2"
+egui_extras = {version = "0.26.2", features = ["syntect", "all_loaders"] }
 rfd = "0.13.0"
 reqwest = { version = "0.11.24", features = ["json"] }
 regex = "1.10.3"
@@ -29,7 +29,7 @@ image = "0.24.8"
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 tokio = { version = "1.36.0", features = ["rt-multi-thread"] }
 pollster = "0.3.0"
-env_logger = "0.11.1"
+env_logger = "0.11.2"
 
 # wasm:
 [target.'cfg(target_arch = "wasm32")'.dependencies]
