@@ -14,6 +14,10 @@ pub fn menu_bar(app: &mut crate::MainApp, ctx: &egui::Context, frame: &mut efram
                     save::save(app, ctx, frame);
                 }
             });
+
+            ui.centered_and_justified(|ui| {
+                ui.label(&app.state.filename).highlight();
+            });
         });
     });
 }
