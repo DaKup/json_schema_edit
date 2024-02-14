@@ -7,8 +7,8 @@ use serde_jsonc::Value;
 use crate::processing::ViewerMode;
 
 pub fn deep_hash_map(
-    ctx: &egui::Context,
-    frame: &mut eframe::Frame,
+    // ctx: &egui::Context,
+    // frame: &mut eframe::Frame,
     ui: &mut egui::Ui,
     key: &str,
     mut value: &mut serde_jsonc::Value,
@@ -23,8 +23,8 @@ pub fn deep_hash_map(
                 let mut path = path.clone();
                 path.push(parent_key);
                 deep_hash_map(
-                    ctx,
-                    frame,
+                    // ctx,
+                    // frame,
                     ui,
                     key,
                     value,
@@ -67,22 +67,15 @@ pub fn deep_hash_map(
                         }
                         ViewerMode::Markdown => {}
                     });
-                    ui.vertical(|ui| {
-                        match viewer_mode {
-                            ViewerMode::Markdown | ViewerMode::Both => {
-                                let mut cache = egui_commonmark::CommonMarkCache::default();
-                                egui_commonmark::CommonMarkViewer::new("markdown_viewer2")
-                                    .max_image_width(Some(512))
-                                    .default_width(Some((available_width / 2.0) as usize))
-                                    .show(
-                                        ui,
-                                        &mut cache,
-                                        string_value,
-                                        // &markdown,
-                                    );
-                            }
-                            ViewerMode::Editor => {}
+                    ui.vertical(|ui| match viewer_mode {
+                        ViewerMode::Markdown | ViewerMode::Both => {
+                            let mut cache = egui_commonmark::CommonMarkCache::default();
+                            egui_commonmark::CommonMarkViewer::new("markdown_viewer2")
+                                .max_image_width(Some(512))
+                                .default_width(Some((available_width / 2.0) as usize))
+                                .show(ui, &mut cache, string_value);
                         }
+                        ViewerMode::Editor => {}
                     });
                 });
             }

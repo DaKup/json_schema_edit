@@ -4,7 +4,7 @@ mod deep_hash_map;
 
 use crate::processing::ViewerMode;
 
-pub fn central_panel(app: &mut crate::MainApp, ctx: &egui::Context, frame: &mut eframe::Frame) {
+pub fn central_panel(app: &mut crate::MainApp, ctx: &egui::Context, _frame: &mut eframe::Frame) {
     egui::CentralPanel::default().show(ctx, |ui| {
         let available_width = ui.available_width();
         let available_height = ui.available_height();
@@ -25,8 +25,8 @@ pub fn central_panel(app: &mut crate::MainApp, ctx: &egui::Context, frame: &mut 
                 .show(ui, |ui| {
                     app.state.json_hash_map.iter_mut().for_each(|(key, value)| {
                         deep_hash_map::deep_hash_map(
-                            ctx,
-                            frame,
+                            // ctx,
+                            // frame,
                             ui,
                             key,
                             value,
