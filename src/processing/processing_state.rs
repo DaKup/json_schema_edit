@@ -1,5 +1,6 @@
 #![warn(clippy::all)]
 
+
 use serde_jsonc::Value;
 
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
@@ -16,7 +17,7 @@ pub struct ProcessingState {
     pub json: Vec<u8>,
     pub filename: String,
 
-    pub json_hash_map: std::collections::HashMap<String, serde_jsonc::Value>,
+    pub json_hash_map: std::collections::BTreeMap<String, serde_jsonc::Value>,
 
     pub description: String,
 
