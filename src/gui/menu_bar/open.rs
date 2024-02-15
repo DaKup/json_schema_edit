@@ -5,7 +5,7 @@ use crate::platform;
 fn open_(data: &mut std::sync::Arc<std::sync::Mutex<(Vec<u8>, String, bool)>>) {
     async fn run(data: std::sync::Arc<std::sync::Mutex<(Vec<u8>, String, bool)>>) {
         let file_handle = rfd::AsyncFileDialog::new()
-            .add_filter("JSON Scheme", &["json"])
+            .add_filter("JSON Schema", &["json"])
             .pick_file()
             .await;
 

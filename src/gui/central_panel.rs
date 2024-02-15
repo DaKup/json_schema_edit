@@ -6,9 +6,7 @@ use crate::processing::ViewerMode;
 
 pub fn central_panel(app: &mut crate::MainApp, ctx: &egui::Context, _frame: &mut eframe::Frame) {
     egui::CentralPanel::default().show(ctx, |ui| {
-        let available_width = ui.available_width();
-        let available_height = ui.available_height();
-
+        
         ui.horizontal_top(|ui| {
             for viewer_mode in [ViewerMode::Editor, ViewerMode::Markdown, ViewerMode::Both] {
                 ui.radio_value(
@@ -26,16 +24,18 @@ pub fn central_panel(app: &mut crate::MainApp, ctx: &egui::Context, _frame: &mut
                 .for_each(|(_, value)| {
                     *value = false;
                 });
-        }
+            }
         if ui.small_button("Show all").clicked() {
             app.state
-                .visibility_hash_map
-                .iter_mut()
-                .for_each(|(_, value)| {
-                    *value = true;
-                });
+            .visibility_hash_map
+            .iter_mut()
+            .for_each(|(_, value)| {
+                *value = true;
+            });
         }
-
+        let available_width = ui.available_width();
+        let available_height = ui.available_height();
+        
         ui.vertical(|ui| {
             egui::ScrollArea::vertical()
                 .min_scrolled_height(available_height)
