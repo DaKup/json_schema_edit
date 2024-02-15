@@ -1,6 +1,5 @@
 #![warn(clippy::all)]
 
-
 use serde_jsonc::Value;
 
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
